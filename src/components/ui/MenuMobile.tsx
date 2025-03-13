@@ -1,7 +1,13 @@
+import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 import { paths } from '~/utils/paths'
+
+interface MobileMenuProps {
+  isOpen: boolean
+  onClose: () => void
+}
 
 const listItems = [
   {
@@ -36,11 +42,13 @@ const listItems = [
   },
 ]
 
-const MenuMobile = () => {
+const MenuMobile: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   const listVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0 },
   }
+
+  if (!isOpen) return null
 
   return (
     <nav
@@ -55,10 +63,11 @@ const MenuMobile = () => {
             animate='visible'
             transition={{ duration: 0.3, delay }}
             className='text-center'
+            onClick={onClose}
           >
             <Link
               href={`#${link}`}
-              className='block w-full py-4 capitalize hover:bg-[#eee]'
+              className='block w-full py-4 capitalize hover:bg-[#eee] dark:text-zinc-200 dark:hover:bg-zinc-600'
               style={{ transition: '0.5s ease' }}
             >
               {name}

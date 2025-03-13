@@ -78,8 +78,8 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       boxShadow: {
-        'custom-dark': 'inset 0 0 0 9px #fb6f92',
-        'custom-light': 'inset 0 0 0 9px #29a587',
+        'custom-dark': 'inset 0 0 0 5px #fb6f92',
+        'custom-light': 'inset 0 0 0 5px #29a587',
       },
     },
   },

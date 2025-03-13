@@ -36,7 +36,7 @@ export default function FloatingShape({
 }: FloatingShapeProps) {
   return (
     <motion.div
-      className={`${className} pointer-events-none absolute rounded-full`}
+      className={`${className} pointer-events-none absolute hidden rounded-full sm:block`}
       style={{
         width: size,
         height: size,

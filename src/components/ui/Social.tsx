@@ -4,11 +4,11 @@ import { FaFacebook, FaGithub } from 'react-icons/fa'
 const listItems = [
   {
     link: 'https://www.facebook.com/profile.php?id=100042009667753',
-    icon: <FaFacebook size={28} />,
+    icon: <FaFacebook size={32} className='text-[#0866ff] dark:text-white' />,
   },
   {
     link: 'https://github.com/nhuuhuynhh',
-    icon: <FaGithub size={28} />,
+    icon: <FaGithub size={32} />,
   },
 ]
 
@@ -19,7 +19,7 @@ const Social = () => {
         <li key={index}>
           <Link
             href={link}
-            className='flex h-6 w-6 items-center justify-center transition-all duration-300 hover:text-[#29a587]'
+            className='flex h-8 w-8 items-center justify-center transition-all duration-300 hover:text-[#29a587]'
           >
             {icon}
           </Link>

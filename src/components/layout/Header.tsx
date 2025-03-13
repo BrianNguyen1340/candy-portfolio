@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Navigation from './Navigation'
-import MenuMobile from './MenuMobile'
-import ToggleMenuMobile from '../ui/ToggleMenuMobile'
+import Navigation from '~/components/ui/Navigation'
+import MenuMobile from '~/components/ui/MenuMobile'
+import ToggleMenuMobile from '~/components/ui/ToggleMenuMobile'
 
 const Header = () => {
   const [isFixed, setIsFixed] = useState<boolean>(false)
@@ -40,7 +40,7 @@ const Header = () => {
           : 'absolute bg-transparent'
       }`}
     >
-      <div className='mx-auto flex h-full w-full items-center justify-between xxs:w-[300px] xs:w-[450px] sm:w-[600px] md:w-[750px] lg:w-[1000px] xl:w-[1200px]'>
+      <div className='mx-auto flex h-full w-full items-center justify-between xxs:w-[300px] xs:w-[450px] sm:w-[600px] md:w-[750px] lg:w-[950px] xl:w-[1200px]'>
         <Link
           href={`#home`}
           className='mr-5 flex items-center justify-center lg:mr-0'
@@ -55,7 +55,12 @@ const Header = () => {
           onClick={toggleMenu}
           isMenuMobileOpen={isMenuMobileOpen}
         />
-        {isMenuMobileOpen && <MenuMobile />}
+        {isMenuMobileOpen && (
+          <MenuMobile
+            isOpen={isMenuMobileOpen}
+            onClose={() => setIsMenuMobileOpen(false)}
+          />
+        )}
       </div>
     </header>
   )
