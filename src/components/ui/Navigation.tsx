@@ -1,52 +1,56 @@
 'use client'
 
-import { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 
-import { paths } from '~/utils/paths'
 import ModeToggle from '~/components/ui/ModeToggle'
+import { paths } from '~/utils/paths'
 
 const navItems = [
   {
     link: paths.home,
-    content: 'home',
+    name: 'home',
   },
   {
     link: paths.about,
-    content: 'about',
+    name: 'about',
   },
   {
     link: paths.services,
-    content: 'services',
+    name: 'services',
   },
   {
     link: paths.projects,
-    content: 'projects',
+    name: 'projects',
   },
   {
     link: paths.experience,
-    content: 'experience',
+    name: 'experience',
   },
   {
     link: paths.contact,
-    content: 'contact',
+    name: 'contact',
   },
 ]
 
-const Navigation = () => {
-  const [active, setActive] = useState<string>(paths.home)
+interface NavigationProps {
+  activeNav: string
+  // eslint-disable-next-line no-unused-vars
+  setActiveNav: (path: string) => void
+}
 
+const Navigation: React.FC<NavigationProps> = ({ activeNav, setActiveNav }) => {
   return (
     <nav className='flex items-center justify-end gap-10'>
       <ul className='hidden h-full items-center justify-center gap-4 text-lg font-semibold capitalize text-zinc-700 dark:text-white md:gap-6 lg:flex'>
-        {navItems.map(({ link, content }, index) => (
+        {navItems.map(({ link, name }, index) => (
           <li key={index}>
             <Link
-              onClick={() => setActive(link)}
-              href={`#${link}`}
-              className={`${active === link ? 'text-[#ff0a54]' : ''} relative after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[#ff0a54] after:duration-300 hover:after:w-full`}
+              onClick={() => setActiveNav(link)}
+              href={`${link}`}
+              className={`${activeNav === link ? 'text-[#ff0a54]' : ''} relative after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[#ff0a54] after:duration-300 hover:after:w-full`}
             >
-              {content}
+              {name}
             </Link>
           </li>
         ))}

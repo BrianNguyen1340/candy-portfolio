@@ -17,22 +17,7 @@ body {
 }
 
 section {
-  padding-top: 8rem;
-  padding-bottom: 2rem;
-}
-
-.wheel-animation {
-  animation: wheelAnimation 2s ease infinite;
-}
-
-@keyframes wheelAnimation {
-  0% {
-    transform: translateY(0);
-  }
-
-  30% {
-    transform: translateY(3.75rem);
-  }
+  padding: 8rem 0;
 }
 
 .dark-overlay {

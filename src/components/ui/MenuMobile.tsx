@@ -1,13 +1,8 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 import { paths } from '~/utils/paths'
-
-interface MobileMenuProps {
-  isOpen: boolean
-  onClose: () => void
-}
 
 const listItems = [
   {
@@ -42,7 +37,38 @@ const listItems = [
   },
 ]
 
-const MenuMobile: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
+interface MobileMenuProps {
+  isOpen: boolean
+  onClose: () => void
+  activeMenu: string
+  // eslint-disable-next-line no-unused-vars
+  setActiveMenu: (path: string) => void
+}
+
+const MenuMobile: React.FC<MobileMenuProps> = ({
+  isOpen,
+  onClose,
+  activeMenu,
+  setActiveMenu,
+}) => {
+  const menuRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        onClose()
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen, onClose])
+
   const listVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0 },
@@ -52,6 +78,7 @@ const MenuMobile: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
   return (
     <nav
+      ref={menuRef}
       className={`absolute left-0 top-[100%] z-20 h-screen w-full bg-[#f2f4f7] dark:bg-[#1c1c1d] lg:hidden`}
     >
       <ul className='mt-16'>
@@ -66,8 +93,9 @@ const MenuMobile: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             onClick={onClose}
           >
             <Link
-              href={`#${link}`}
-              className='block w-full py-4 capitalize hover:bg-[#eee] dark:text-zinc-200 dark:hover:bg-zinc-600'
+              onClick={() => setActiveMenu(link)}
+              href={`${link}`}
+              className={`${activeMenu === link ? 'text-[#ff0a54]' : ''} block w-full py-4 font-semibold capitalize hover:bg-[#eee] dark:hover:bg-zinc-600`}
               style={{ transition: '0.5s ease' }}
             >
               {name}

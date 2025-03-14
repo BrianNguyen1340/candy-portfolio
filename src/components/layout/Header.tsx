@@ -7,10 +7,13 @@ import Image from 'next/image'
 import Navigation from '~/components/ui/Navigation'
 import MenuMobile from '~/components/ui/MenuMobile'
 import ToggleMenuMobile from '~/components/ui/ToggleMenuMobile'
+import { paths } from '~/utils/paths'
 
 const Header = () => {
   const [isFixed, setIsFixed] = useState<boolean>(false)
   const [isMenuMobileOpen, setIsMenuMobileOpen] = useState<boolean>(false)
+  const [activeNav, setActiveNav] = useState<string>(paths.home)
+  const [activeMenu, setActiveMenu] = useState<string>(paths.home)
 
   const toggleMenu = () => {
     setIsMenuMobileOpen(!isMenuMobileOpen)
@@ -41,22 +44,28 @@ const Header = () => {
     >
       <div className='mx-auto flex h-full w-full items-center justify-between xxs:w-[300px] xs:w-[450px] sm:w-[600px] md:w-[750px] lg:w-[950px] xl:w-[1200px]'>
         <Link
-          href='#home'
+          href={paths.home}
           className='flex items-center justify-center'
-          onClick={() => setIsMenuMobileOpen(false)}
+          onClick={() => {
+            setActiveNav(paths.home)
+            setActiveMenu(paths.home)
+            setIsMenuMobileOpen(false)
+          }}
         >
           <div className='mr-3 flex items-center justify-center'>
             <Image src='/candy.svg' alt='logo' width={50} height={50} />
           </div>
           <div className='text-2xl font-semibold capitalize'>candy</div>
         </Link>
-        <Navigation />
+        <Navigation activeNav={activeNav} setActiveNav={setActiveNav} />
         <ToggleMenuMobile
           onClick={toggleMenu}
           isMenuMobileOpen={isMenuMobileOpen}
         />
         {isMenuMobileOpen && (
           <MenuMobile
+            activeMenu={activeMenu}
+            setActiveMenu={setActiveMenu}
             isOpen={isMenuMobileOpen}
             onClose={() => setIsMenuMobileOpen(false)}
           />
