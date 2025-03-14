@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className='relative bg-[#F0EBE3] dark:bg-[#222831]'>
+      <body className='relative bg-[#f2f4f7] dark:bg-[#1c1c1d]'>
         {/* <AnimateCursor /> */}
         <ScrollToTop />
         <ThemeProvider

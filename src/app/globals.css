@@ -21,6 +21,20 @@ section {
   padding-bottom: 2rem;
 }
 
+.wheel-animation {
+  animation: wheelAnimation 2s ease infinite;
+}
+
+@keyframes wheelAnimation {
+  0% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(3.75rem);
+  }
+}
+
 .dark-overlay {
   content: '';
   position: fixed;
@@ -32,15 +46,6 @@ section {
   height: 100%;
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-.text-shadow {
-  text-shadow:
-    3px 3px 0 #999,
-    -1px -1px 0 #999,
-    1px -1px 0 #999,
-    -1px 1px 0 #999,
-    1px 1px 0 #999;
 }
 
 @media (min-width: 786px) {

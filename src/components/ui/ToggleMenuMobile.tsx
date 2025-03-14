@@ -14,7 +14,7 @@ const ToggleMenuMobile: React.FC<ToggleMenuMobileProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`${!isMenuMobileOpen && 'rotate-180'} ml-5 h-7 w-fit cursor-pointer bg-[#F0EBE3] transition duration-300 dark:bg-[#222831] lg:ml-0 lg:hidden`}
+      className={`${!isMenuMobileOpen && 'rotate-180'} ml-5 h-7 w-fit cursor-pointer bg-[#f2f4f7] transition duration-300 dark:bg-[#1c1c1d] lg:ml-0 lg:hidden`}
       style={style}
     >
       {isMenuMobileOpen ? (

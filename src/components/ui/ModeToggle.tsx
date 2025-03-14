@@ -4,9 +4,7 @@ import * as React from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
-import { Button } from '~/components/ui/Button'
-
-export function ModeToggle() {
+const ModeToggle = () => {
   const { theme, setTheme, systemTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
@@ -19,16 +17,17 @@ export function ModeToggle() {
   const currentTheme = theme === 'system' ? systemTheme : theme
 
   return (
-    <Button
-      variant='ghost'
-      size='icon'
+    <button
       onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')}
+      className='rounded-full p-2 transition-all duration-300 hover:bg-white dark:hover:bg-black'
     >
       {currentTheme === 'dark' ? (
-        <Sun className='transition-all' size={24} />
+        <Sun className='transition-all duration-300' size={20} />
       ) : (
-        <Moon className='transition-all' size={24} />
+        <Moon className='transition-all duration-300' size={20} />
       )}
-    </Button>
+    </button>
   )
 }
+
+export default ModeToggle

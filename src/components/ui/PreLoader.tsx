@@ -16,7 +16,7 @@ const Preloader = () => {
 
   return (
     <motion.div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-[#F0EBE3] text-[#222831] dark:bg-[#222831] dark:text-[#F0EBE3]'
+      className='fixed inset-0 z-50 flex items-center justify-center bg-[#f2f4f7] dark:bg-[#1c1c1d]'
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.5, delay: 1.5 }}

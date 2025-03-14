@@ -52,7 +52,7 @@ const MenuMobile: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
   return (
     <nav
-      className={`absolute left-0 top-[100%] z-20 h-screen w-full bg-[#F0EBE3] dark:bg-[#222831] lg:hidden`}
+      className={`absolute left-0 top-[100%] z-20 h-screen w-full bg-[#f2f4f7] dark:bg-[#1c1c1d] lg:hidden`}
     >
       <ul className='mt-16'>
         {listItems.map(({ delay, link, name }, index) => (

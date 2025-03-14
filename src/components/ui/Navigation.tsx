@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 import { paths } from '~/utils/paths'
-import { ModeToggle } from '~/components/ui/ModeToggle'
+import ModeToggle from '~/components/ui/ModeToggle'
 
 const navItems = [
   {
@@ -38,7 +38,7 @@ const Navigation = () => {
 
   return (
     <nav className='flex items-center justify-end gap-10'>
-      <ul className='hidden h-full items-center justify-center gap-4 text-sm font-semibold capitalize text-zinc-700 dark:text-white md:gap-6 lg:flex xl:text-base'>
+      <ul className='hidden h-full items-center justify-center gap-4 text-lg font-semibold capitalize text-zinc-700 dark:text-white md:gap-6 lg:flex'>
         {navItems.map(({ link, content }, index) => (
           <li key={index}>
             <Link
