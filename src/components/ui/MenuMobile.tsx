@@ -95,8 +95,7 @@ const MenuMobile: React.FC<MobileMenuProps> = ({
             <Link
               onClick={() => setActiveMenu(link)}
               href={`${link}`}
-              className={`${activeMenu === link ? 'text-[#ff0a54]' : ''} block w-full py-4 font-semibold capitalize hover:bg-[#eee] dark:hover:bg-zinc-600`}
-              style={{ transition: '0.5s ease' }}
+              className={`${activeMenu === link ? 'text-[#ff0a54]' : ''} block w-full py-4 font-semibold capitalize transition-all duration-500 ease-in hover:bg-[#eee] dark:hover:bg-zinc-600`}
             >
               {name}
             </Link>

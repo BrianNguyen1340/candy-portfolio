@@ -22,7 +22,7 @@ const Social = () => {
         >
           <Link
             href={link}
-            className='flex items-center justify-center transition-all duration-300 hover:text-[#48cae4] hover:dark:text-[#57cc99]'
+            className='flex items-center justify-center transition-all duration-300 hover:text-[#29a587]'
           >
             {icon}
           </Link>

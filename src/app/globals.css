@@ -2,154 +2,150 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  user-select: none;
-  scroll-behavior: smooth;
+.digital-ball {
+  width: clamp(9em, 12vw, 11em);
+  height: clamp(9em, 12vw, 11em);
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  overflow: hidden;
+  background: #455ce9;
 }
 
-body {
-  font-family: 'Jost', sans-serif;
-}
-
-section {
-  padding: 8rem 0;
-}
-
-.dark-overlay {
-  content: '';
-  position: fixed;
-  visibility: visible;
-  z-index: 1;
-  top: 100px;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.digital-ball .overlay {
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 1s ease-in-out;
+  animation: digitalball 6s ease-in-out infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
-@media (min-width: 786px) {
-  .dark-overlay {
-    display: none !important;
-  }
-}
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-@keyframes slideDown {
+@keyframes digitallball {
   0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@layer utilities {
-  .animate-slideDown {
-    animation: slideDown 0.5s ease-in-out forwards;
-  }
-
-  .animate-profile {
-    animation: animateProfile 8s ease-in-out infinite 1s;
-  }
-}
-
-@keyframes animateProfile {
-  0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    background: #455ce9;
   }
   50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    background: #ff4444;
   }
   100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    background: #455ce9;
   }
+}
+
+.globe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3em;
+  height: 3em;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.globe :nth-child(1) {
+  animation-delay: -1.8s;
+}
+
+.globe-wrap {
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(30deg);
+  animation: globe 5.4s cubic-bezier(0.35, 0, 0.65, 1) infinite;
+  overflow: hidden;
+  box-shadow: inset 0px 0px 0px 0.125em #fff;
+}
+
+@keyframes globe {
+  0% {
+    transform: translate(-50%, -50%) rotate(15deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-15deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(15deg);
+  }
+}
+
+.globe .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: inset 0.1em 0px 0px 0.08em #fff;
+  animation: circle1 2.7s linear infinite;
+  font-size: 0.75em;
+}
+
+@keyframes circle1 {
+  0% {
+    border-radius: 50%;
+    box-shadow: inset 0.1em 0px 0px 0.08em #fff;
+    width: 100%;
+  }
+  49% {
+    border-radius: 50%;
+    box-shadow: inset 0.1em 0px 0px 0.08em #fff;
+    background: transparent;
+  }
+  50% {
+    border-radius: 0%;
+    width: 0.175em;
+    background: #fff;
+  }
+  51% {
+    border-radius: 50%;
+    box-shadow: inset -0.1em 0px 0px 0.08em #fff;
+    background: transparent;
+  }
+  100% {
+    border-radius: 50%;
+    box-shadow: inset -0.1em 0px 0px 0.08em #fff;
+    width: 100%;
+  }
+}
+
+.globe .circle-hor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  height: 55%;
+  box-shadow: inset 0px 0px 0px 0.15em #fff;
+  font-size: 0.75em;
+}
+
+.globe .circle-hor-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  transform: translate(-50%, -50%);
+  border-radius: 0%;
+  height: 0.15em;
+  background: #fff;
+  font-size: 0.75em;
 }

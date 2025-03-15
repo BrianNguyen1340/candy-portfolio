@@ -38,7 +38,7 @@ const Header = () => {
     <header
       className={`left-0 top-0 z-10 h-fit w-full py-6 transition-all duration-300 ${
         isFixed
-          ? 'animate-slideDown fixed bg-[#f2f4f7] shadow-xl dark:bg-[#252728]'
+          ? 'animate-slide-down fixed bg-[#fff] shadow-xl dark:bg-[#252728]'
           : 'absolute bg-transparent'
       }`}
     >
@@ -55,7 +55,9 @@ const Header = () => {
           <div className='mr-3 flex items-center justify-center'>
             <Image src='/candy.svg' alt='logo' width={50} height={50} />
           </div>
-          <div className='text-2xl font-semibold capitalize'>candy</div>
+          <div className='font-dancing-script text-4xl font-semibold capitalize tracking-widest'>
+            candy
+          </div>
         </Link>
         <Navigation activeNav={activeNav} setActiveNav={setActiveNav} />
         <ToggleMenuMobile

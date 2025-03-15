@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { motion, Variants } from 'framer-motion'
 
 const floatingVariants: Variants = {
@@ -16,38 +17,17 @@ const floatingVariants: Variants = {
 }
 
 interface FloatingShapeProps {
-  size?: number
-  color?: string
-  top?: string
-  left?: string
-  right?: string
-  bottom?: string
   className?: string
 }
 
-export default function FloatingShape({
-  size,
-  color,
-  top,
-  left,
-  right,
-  bottom,
-  className,
-}: FloatingShapeProps) {
+const FloatingShape: React.FC<FloatingShapeProps> = ({ className }) => {
   return (
     <motion.div
       className={`${className} pointer-events-none absolute hidden rounded-full sm:block`}
-      style={{
-        width: size,
-        height: size,
-        backgroundColor: color,
-        top,
-        left,
-        right,
-        bottom,
-      }}
       variants={floatingVariants}
       animate='animate'
     />
   )
 }
+
+export default FloatingShape

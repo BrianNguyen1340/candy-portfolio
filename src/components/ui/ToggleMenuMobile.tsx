@@ -2,20 +2,17 @@ import { Menu, X } from 'lucide-react'
 
 interface ToggleMenuMobileProps {
   onClick: () => void
-  style?: React.CSSProperties
   isMenuMobileOpen: boolean
 }
 
 const ToggleMenuMobile: React.FC<ToggleMenuMobileProps> = ({
   onClick,
-  style,
   isMenuMobileOpen,
 }) => {
   return (
     <div
       onClick={onClick}
-      className={`${!isMenuMobileOpen && 'rotate-180'} ml-5 h-7 w-fit cursor-pointer bg-[#f2f4f7] transition duration-300 dark:bg-[#1c1c1d] lg:ml-0 lg:hidden`}
-      style={style}
+      className={`${!isMenuMobileOpen && 'rotate-180'} ml-5 h-7 w-fit cursor-pointer bg-transparent transition duration-300 lg:ml-0 lg:hidden`}
     >
       {isMenuMobileOpen ? (
         <X size={30} strokeWidth={2.5} />

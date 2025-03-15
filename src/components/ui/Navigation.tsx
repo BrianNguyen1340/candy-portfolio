@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 import ModeToggle from '~/components/ui/ModeToggle'
 import { paths } from '~/utils/paths'
@@ -44,7 +45,11 @@ const Navigation: React.FC<NavigationProps> = ({ activeNav, setActiveNav }) => {
     <nav className='flex items-center justify-end gap-10'>
       <ul className='hidden h-full items-center justify-center gap-4 text-lg font-semibold capitalize text-zinc-700 dark:text-white md:gap-6 lg:flex'>
         {navItems.map(({ link, name }, index) => (
-          <li key={index}>
+          <motion.li
+            key={index}
+            whileHover={{ scale: 1.2 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 10 }}
+          >
             <Link
               onClick={() => setActiveNav(link)}
               href={`${link}`}
@@ -52,7 +57,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeNav, setActiveNav }) => {
             >
               {name}
             </Link>
-          </li>
+          </motion.li>
         ))}
       </ul>
       <ModeToggle />
